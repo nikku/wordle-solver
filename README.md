@@ -8,7 +8,35 @@ Get a little help solving your [Wordle](https://www.nytimes.com/games/wordle/ind
 ## Usage
 
 ```
-npx @nikku/wordle-solver
+$ npx @nikku/wordle-solver
+
+@nikku/wordle-solver solves a Wordle for you.
+
+We'll provide you with a word to input to Wordle.
+You feedback the result as a [+-???] encoded string:
+
+  + = match
+  ? = contained
+  - = no match
+
+-----
+
+Attempt #1 --- Choose cares
+Enter result [+-???]: +--??
+
+  🟩⬜⬜🟨🟨    cares    p=0.00, matched=_____, letters=[...](26), words=[...](12947)
+
+Attempt #2 --- Choose those
+Enter result [+-???]: -++??
+
+  ⬜🟩🟩🟨🟨    those    p=0.22, matched=c____, letters=[...](10), words=[...](10)
+
+Attempt #3 --- Choose cigar
+Enter result [+-???]: +++++
+
+  🟩🟩🟩🟩🟩    cigar    p=0.64, matched=cho__, letters=[  ], words=[  ]
+
+Well done!
 ```
 
 
