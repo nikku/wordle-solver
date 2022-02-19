@@ -49,7 +49,7 @@ describe('game', function() {
 
 describe('solver', function() {
 
-  describe('should solve', function() {
+  describe('should solve random', function() {
 
     for (var i = 0; i < 5; i++) {
 
@@ -66,6 +66,28 @@ describe('solver', function() {
       });
 
     }
+
+  });
+
+
+  describe('should solve special', function() {
+
+    const words = [ 'boohs' ];
+
+    for (const word of words) {
+
+      it(word, async function() {
+
+        // given
+        const game = createGame(word);
+
+        console.log('\nFind word <' + word + '>');
+
+        await solve(game, { log: printProgress });
+      });
+
+    }
+
   });
 
 });
