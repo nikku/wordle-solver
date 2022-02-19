@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import readline from 'readline';
 import pc from 'picocolors';
 
@@ -31,7 +33,7 @@ async function run() {
   let attempt = 0;
 
   console.log(`
-${ highlight('@nikku/wordle') } solves a ${highlight('Wordle')} for you.
+${ highlight('@nikku/wordle-solver') } solves a ${highlight('Wordle')} for you.
 
 We'll provide you with a word to input to ${ highlight('Wordle') }.
 You feedback the result as a ${highlight('[+-???]')} encoded string:
