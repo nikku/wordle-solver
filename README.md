@@ -22,19 +22,19 @@ You feedback the result as a [+-???] encoded string:
 -----
 
 Attempt #1 --- Choose cares
-Enter result [+-???]: +--??
+Enter result [+-???]: -?--?
 
-  🟩⬜⬜🟨🟨    cares    p=0.00, matched=_____, letters=[...](26), words=[...](12947)
+  ⬜🟨⬜⬜🟨    cares    p=0.00, matched=_____, letters=[...](26), words=[...](12947)
 
-Attempt #2 --- Choose those
-Enter result [+-???]: -++??
+Attempt #2 --- Choose spalt
+Enter result [+-???]: ?-??-
 
-  ⬜🟩🟩🟨🟨    those    p=0.22, matched=c____, letters=[...](10), words=[...](10)
+  🟨⬜🟨🟨⬜    spalt    p=0.02, matched=_____, letters=[...](21), words=[...](196)
 
-Attempt #3 --- Choose cigar
+Attempt #3 --- Choose usual
 Enter result [+-???]: +++++
 
-  🟩🟩🟩🟩🟩    cigar    p=0.64, matched=cho__, letters=[  ], words=[  ]
+  🟩🟩🟩🟩🟩    usual    p=0.05, matched=_____, letters=[ u, s, a, l, y ], words=[ usual, lyssa ]
 
 Well done!
 ```
