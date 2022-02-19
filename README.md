@@ -53,7 +53,7 @@ The [solver](./lib/solver.js) attempts to reduce the solution space (available w
 
 ## Statistics
 
-Considering a dataset of 12000 five letter words the algorithm __solves 96%__ of all puzzles in an average of __4.5 steps__.
+In a large dataset of five letter words the algorithm __solves 96%__ of all puzzles in an average of __4.5 steps__.
 
 ```
 npm run bench
