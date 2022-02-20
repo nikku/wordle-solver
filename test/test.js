@@ -11,8 +11,7 @@ import {
 } from '../lib/index.js';
 
 import {
-  randomWord,
-  words as allWords
+  randomWord
 } from '../lib/dictionary.js';
 
 import {
