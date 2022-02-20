@@ -40,7 +40,7 @@ Well done!
 ```
 
 
-## The Algorithm
+## The Algorithm<a name="algorithm"></a>
 
 It chooses the next word that reduces the solution space (available words), as much as possible:
 
