@@ -16,8 +16,7 @@ import {
 
 import {
   randomWord,
-  words as allWords,
-  words
+  words as allWords
 } from '../lib/dictionary.js';
 
 const __filename = fileURLToPath(import.meta.url);
