@@ -6,10 +6,7 @@ import {
   CONTAINED,
   MATCH,
   NO_MATCH,
-  isWin,
   solve,
-  formatMatch,
-  formatWord,
   printProgress
 } from '../lib/index.js';
 
@@ -61,9 +58,7 @@ describe('solver', function() {
       const { win } = await solve(game, { log: printProgress });
 
       // then
-      if (!skip) {
-        expect(win).to.be.true;
-      }
+      expect(win).to.eql(!skip);
     });
   }
 
@@ -80,7 +75,7 @@ describe('solver', function() {
 
   describe('should solve special', function() {
 
-    const words = [ 'boohs', 'nanny', 'fados', 'yeses', '!loses' ];
+    const words = [ 'boohs', 'nanny', 'fados', 'yeses', '!loses', '!ginks' ];
 
     for (const word of words) {
 
