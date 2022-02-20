@@ -17,7 +17,7 @@ import {
 import {
   randomWord,
   words as allWords
-} from '../lib/dictionary.js';
+} from './dictionary.js';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -58,7 +58,7 @@ async function solveAll(words, report) {
     const {
       win,
       history
-    } = await solve(game);
+    } = await solve(game, allWords);
 
     runs.push([ word, win, history.length ]);
 

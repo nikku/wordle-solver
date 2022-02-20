@@ -1,23 +1,32 @@
 import {
-  createGame
+  createGame,
+  MATCH,
+  NO_MATCH,
+  CONTAINED
 } from './game.js';
 
 import {
-  CONTAINED,
-  MATCH,
-  NO_MATCH,
-  solve,
-  printProgress
-} from '../lib/index.js';
+  randomWord,
+  words as allWords
+} from './dictionary.js';
+
+import colors from 'picocolors';
 
 import {
-  randomWord
-} from '../lib/dictionary.js';
+  printProgress as _printProgress
+} from '../lib/pretty-print.js';
+
+import {
+  solve,
+  suggest
+} from '../lib/index.js';
 
 import {
   expect
 } from 'chai';
 
+
+const printProgress = _printProgress(colors);
 
 describe('game', function() {
 
@@ -45,43 +54,68 @@ describe('game', function() {
 
 describe('solver', function() {
 
-  function test(description, word, skip=false) {
-    it(description, async function() {
+  describe('#suggest', function() {
+
+    it('should suggest word', function() {
 
       // given
-      const game = createGame(word);
-
-      console.log('\nFind word <' + word + '>');
+      const history = [
+        [ 'hands', Array.from('??--+') ]
+      ];
 
       // when
-      const { win } = await solve(game, { log: printProgress });
+      const {
+        word
+      } = suggest(history, allWords);
 
       // then
-      expect(win).to.eql(!skip);
+      expect(word).to.eql('chats');
     });
-  }
-
-  describe('should solve random', function() {
-
-    for (var i = 0; i < 5; i++) {
-      const word = randomWord();
-
-      test(`attempt #${i + 1} - ${word}`, word);
-    }
 
   });
 
 
-  describe('should solve special', function() {
+  describe('#solve', function() {
 
-    const words = [ 'boohs', 'nanny', 'fados', 'yeses', '!loses', '!ginks', 'goofs' ];
+    function test(description, word, skip=false) {
+      it(description, async function() {
 
-    for (const word of words) {
+        // given
+        const game = createGame(word);
 
-      const skip = word.startsWith('!');
+        console.log('\nFind word <' + word + '>');
 
-      test(word, word.replace(/^!/, ''), skip);
+        // when
+        const { win } = await solve(game, allWords, { log: printProgress });
+
+        // then
+        expect(win).to.eql(!skip);
+      });
     }
+
+    describe('should solve random', function() {
+
+      for (var i = 0; i < 5; i++) {
+        const word = randomWord();
+
+        test(`attempt #${i + 1} - ${word}`, word);
+      }
+
+    });
+
+
+    describe('should solve special', function() {
+
+      const words = [ 'boohs', 'nanny', 'fados', 'yeses', '!loses', '!ginks', 'goofs' ];
+
+      for (const word of words) {
+
+        const skip = word.startsWith('!');
+
+        test(word, word.replace(/^!/, ''), skip);
+      }
+
+    });
 
   });
 

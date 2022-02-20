@@ -2,7 +2,7 @@
   "name": "@nikku/wordle-solver",
   "version": "0.0.4",
   "description": "A Wordle solver.",
-  "module": "lib/index.js",
+  "exports": "lib/index.js",
   "type": "module",
   "bin": {
     "wordle-solver": "./bin/cli.js"

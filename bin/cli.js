@@ -1,20 +1,28 @@
 #!/usr/bin/env node
 
 import readline from 'readline';
-import pc from 'picocolors';
+import colors from 'picocolors';
 
 import {
-  solve,
-  printProgress
+  solve
 } from '../lib/index.js';
 
+import {
+  words
+} from '../lib/dictionary.js';
 
-const highlight = (val) => pc.bold(pc.blue(val));
-const secondary = (val) => pc.red(val);
+import {
+  printProgress as _printProgress
+} from '../lib/pretty-print.js';
 
-const green = (val) => pc.bold(pc.green(val));
-const yellow = (val) => pc.bold(pc.yellow(val));
-const gray = (val) => pc.bold(pc.black(val));
+const printProgress = _printProgress(colors);
+
+const highlight = (val) => colors.bold(colors.blue(val));
+const secondary = (val) => colors.red(val);
+
+const green = (val) => colors.bold(colors.green(val));
+const yellow = (val) => colors.bold(colors.yellow(val));
+const gray = (val) => colors.bold(colors.black(val));
 
 
 const rl = readline.createInterface({
@@ -61,7 +69,7 @@ You feedback the result as a ${highlight('[+-???]')} encoded string:
     }
   };
 
-  const solved = await solve(game, {
+  const solved = await solve(game, words, {
     log: printProgress
   });
 

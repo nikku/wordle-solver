@@ -1,4 +1,4 @@
-import { randomWord } from '../lib/dictionary.js';
+import { randomWord } from './dictionary.js';
 
 import {
   MATCH,
@@ -6,6 +6,11 @@ import {
   NO_MATCH
 } from '../lib/game.js';
 
+export {
+  MATCH,
+  CONTAINED,
+  NO_MATCH
+};
 
 export function createGame(word = randomWord()) {
 

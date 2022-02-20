@@ -56,10 +56,10 @@ Implemented in [`lib/solver.js`](./lib/solver.js), shows [decent performance](#p
 
 ## Performance
 
-The [algorithm](#algorithm) __solves 99%__ of all puzzles in an average of __4.4 steps__.
+The [algorithm](#algorithm) __solves 99%__ of all puzzles in an average of __4.3 steps__.
 
 ```
 $ npm run bench
 ...
-W=0.991 S=4.433 R=1500
+W=0.986 S=4.325 R=1500
 ```
