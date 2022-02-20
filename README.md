@@ -42,23 +42,23 @@ Well done!
 ```
 
 
-## The Algorithm<a name="algorithm"></a>
+## How it Works
 
-Chooses the next word which reduces the solution space as much as possible:
+The solver is implemented in [`lib/solver.js`](./lib/solver.js). It uses `cares` as the initial word but can also handle any given input history.
 
+### Algorithm
+
+Every pick it chooses the next word in order to reduce the solution space as much as possible. 
+
+* Accounts for historic picks (match, not matched, contained)
 * Scores letter occurance per column
 * Derives a word score
-* Adds a penalty for letter duplicates 
+* Adds a penalty for letter duplicates
 * Uses matched slots to guess / exclude likely letters
 
-Uses `cares` as the initial word.
+### Performance
 
-Implemented in [`lib/solver.js`](./lib/solver.js), shows [decent performance](#performance).
-
-
-## Performance
-
-The [algorithm](#algorithm) __solves 99%__ of all puzzles in an average of __4.3 steps__.
+[Wordle Solver](https://github.com/nikku/wordle-solver) solves __99%__ of all puzzles in an average of __4.3 steps__.
 
 ```
 $ npm run bench
