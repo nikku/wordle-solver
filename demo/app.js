@@ -27,32 +27,25 @@ function parseHistory(lines) {
     const match = /^[+-?]{5}$/.test(l2) ? Array.from(l2) : null;
 
     if (!word) {
-
-      if (!l1.trim()) {
-        return {
-          error: 'Enter five letter word',
-          history
-        };
-      } else {
-        return {
-          error: `failed to parse <${l1}>: enter 5 letter word`,
-          history
-        };
-      }
+      return {
+        error: {
+          message: 'Enter five letter word',
+          type: 'word',
+          value: l1
+        },
+        history
+      };
     }
 
     if (!match) {
-      if (!l2.trim()) {
-        return {
-          error: 'Enter match string [??--+]',
-          history
-        };
-      } else {
-        return {
-          error: `failed to parse <${l2}>: enter match string, e.g. ?--?+`,
-          history
-        };
-      }
+      return {
+        error: {
+          message: 'Enter match string [??--+]',
+          type: 'match',
+          value: l2
+        },
+        history
+      };
     }
 
     history.push([ word.toLowerCase(), match ]);
@@ -92,7 +85,7 @@ HANDS
       } = suggest(history, words);
 
       setError(null);
-      setSuggestion(word);
+      setSuggestion(error && error.type === 'match' ? null : word);
       setProgress(progress);
     }
 
@@ -102,7 +95,7 @@ HANDS
 
   }, [ text ]);
 
-  const handleKey = useMemo(() => {
+  const handleKeyUp = useMemo(() => {
     return (event) => {
       setText(event.target.value);
     };
@@ -111,13 +104,13 @@ HANDS
   return html`
     <div class="solver">
       <div class="column input-column">
-        <textarea onKeyup=${ handleKey }>${text}</textarea>
+        <textarea spellCheck="false" onKeyup=${ handleKeyUp } value=${text}></textarea>
       </div>
 
       <div class="column output-column">
         ${ error && html`
           <div class="error panel">
-            <p class="text">${ error }</p>
+            <p class="text">${ error.value && html`<span class="highlight">${error.value}</span> `}${ error.message }</p>
           </div>
         `}
         ${ progress && html`
@@ -125,7 +118,7 @@ HANDS
             <h3>Matched</h3>
 
             <p class="text">
-              ${ progress.matched.map(m => m || '_').join('') }
+              <span class="highlight">${ progress.matched.map(m => m || '_').join('') }</span>
             </p>
           </div>
         `}
@@ -158,7 +151,7 @@ HANDS
             <h3>Suggested word</h3>
 
             <p class="text">
-              ${ suggestion }
+              <span class="highlight">${ suggestion }</span>
             </p>
           </div>
         `}

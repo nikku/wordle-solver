@@ -50,6 +50,13 @@ h1, h3 {
   color: #000;
 }
 
+.panel .highlight {
+  background: rgba(200, 200, 200, .8);
+  border-radius: .2em;
+  padding: .2em .4em;
+  font-weight: bold;
+}
+
 .text {
   font-size: 1.2em;
   margin: 10px 0;
