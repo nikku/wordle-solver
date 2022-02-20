@@ -8,7 +8,8 @@ import {
 } from '../lib/index.js';
 
 import {
-  words
+  words,
+  solutions
 } from '../lib/dictionary.js';
 
 import {
@@ -69,11 +70,12 @@ You feedback the result as a ${highlight('[+-???]')} encoded string:
     }
   };
 
-  const solved = await solve(game, words, {
-    log: printProgress
+  const { win } = await solve(game, words, {
+    log: printProgress,
+    solutions
   });
 
-  if (!solved) {
+  if (!win) {
     console.warn('\nThat did not work :-(');
   } else {
     console.log('\nWell done!');

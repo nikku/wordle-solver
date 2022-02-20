@@ -44,11 +44,11 @@ Well done!
 
 ## How it Works
 
-The solver is implemented in [`lib/solver.js`](./lib/solver.js). It uses `cares` as the initial word but can also handle any given input history.
+The solver is implemented in [`lib/solver.js`](./lib/solver.js).
 
 ### Algorithm
 
-Every pick it chooses the next word in order to reduce the solution space as much as possible. 
+Every pick it chooses the next word in order to reduce the solution space as much as possible.
 
 * Accounts for historic picks (match, not matched, contained)
 * Scores letter occurance per column
@@ -58,10 +58,17 @@ Every pick it chooses the next word in order to reduce the solution space as muc
 
 ### Performance
 
-[Wordle Solver](https://github.com/nikku/wordle-solver) solves __99%__ of all puzzles in an average of __4.3 steps__.
+Solves __99.9%__ of all puzzles in an average of __3.7 steps__.
 
 ```
 $ npm run bench
 ...
-W=0.991 S=4.373 R=1500
+W=0.999 S=3.760 R=1500
 ```
+
+Solves __99.1%__ of all puzzles in an average of __4.3 steps__ when accepting the full dictionary as a solution:
+
+```
+$ FULL_DATA_SET=1 npm run bench
+...
+W=0.991 S=4.373 R=1500

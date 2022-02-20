@@ -16,8 +16,12 @@ import {
 
 import {
   randomWord,
-  words as allWords
+  words as allWords,
+  solutions as _solutions
 } from './dictionary.js';
+
+
+const solutions = process.env.FULL_DATA_SET ? allWords : _solutions;
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -29,7 +33,7 @@ function pickWords(range) {
     const words = [];
 
     for (let i = 0; i < 50; i++) {
-      words.push(randomWord(allWords));
+      words.push(randomWord(solutions));
     }
 
     return words;
@@ -37,7 +41,7 @@ function pickWords(range) {
 
   const [ start, end ] = range;
 
-  return allWords.slice(start, end);
+  return solutions.slice(start, end);
 }
 
 
@@ -58,7 +62,9 @@ async function solveAll(words, report) {
     const {
       win,
       history
-    } = await solve(game, allWords);
+    } = await solve(game, allWords, {
+      solutions
+    });
 
     runs.push([ word, win, history.length ]);
 
@@ -126,7 +132,9 @@ function scaffold() {
     const workers = [];
 
     const slices = 8;
-    const slice = Math.trunc(allWords.length / slices);
+    const slice = Math.trunc(solutions.length / slices);
+
+    console.log(`Testing with ${solutions.length} solutions`);
 
     for (let i = 0; i < slices; i++) {
       workers.push(spawnWorker([ slice * i, slice * i + slice - 1]));

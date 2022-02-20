@@ -1,16 +1,18 @@
 import {
-  words
+  words,
+  solutions
 } from '../lib/dictionary.js';
 
 
 export {
-  words
+  words,
+  solutions
 };
 
 /**
  * @param {string[]} words
  * @return {string}
  */
-export function randomWord(_words = words) {
-  return _words[Math.trunc(Math.random() * _words.length)];
+export function randomWord(words = solutions) {
+  return words[Math.trunc(Math.random() * words.length)];
 }

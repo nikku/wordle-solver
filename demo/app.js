@@ -3,6 +3,7 @@ import {
 } from '../lib/index.js';
 
 import {
+  solutions,
   words
 } from '../lib/dictionary.js';
 
@@ -82,7 +83,7 @@ HANDS
       const {
         progress,
         word
-      } = suggest(history, words);
+      } = suggest(history, words, solutions);
 
       setError(null);
       setSuggestion(error && error.type === 'match' ? null : word);
