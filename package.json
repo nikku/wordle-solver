@@ -16,7 +16,7 @@
     "dev": "nodemon --exec 'npm test' test/test.js",
     "bench": "node test/bench.js",
     "random-bench": "RANDOM_WORDS=1 npm run bench",
-    "serve": "sirv --develop"
+    "serve": "sirv --dev"
   },
   "keywords": [
     "wordle",
