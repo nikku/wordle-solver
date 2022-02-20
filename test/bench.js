@@ -103,7 +103,7 @@ async function spawnWorker(range) {
 
       runs.push(...workerRuns);
 
-      console.log('W=%s S=%s R=%s', (wins / runs.length).toFixed(2), (steps / wins).toFixed(2), runs.length);
+      console.log('W=%s S=%s R=%s', (wins / runs.length).toFixed(3), (steps / wins).toFixed(3), runs.length);
     });
 
     worker.on('error', reject);
