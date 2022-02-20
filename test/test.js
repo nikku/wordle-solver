@@ -80,7 +80,7 @@ describe('solver', function() {
 
   describe('should solve special', function() {
 
-    const words = [ 'boohs', 'nanny', 'fados', 'yeses' ];
+    const words = [ 'boohs', 'nanny', 'fados', 'yeses', '!loses' ];
 
     for (const word of words) {
 
