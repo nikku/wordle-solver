@@ -49,22 +49,30 @@ describe('game', function() {
 
 describe('solver', function() {
 
+  function test(description, word, skip=false) {
+    it(description, async function() {
+
+      // given
+      const game = createGame(word);
+
+      console.log('\nFind word <' + word + '>');
+
+      // when
+      const { win } = await solve(game, { log: printProgress });
+
+      // then
+      if (!skip) {
+        expect(win).to.be.true;
+      }
+    });
+  }
+
   describe('should solve random', function() {
 
     for (var i = 0; i < 5; i++) {
-
       const word = randomWord();
 
-      it(`attempt #${i + 1} - ${word}`, async function() {
-
-        // given
-        const game = createGame(word);
-
-        console.log('\nFind word <' + word + '>');
-
-        await solve(game, { log: printProgress });
-      });
-
+      test(`attempt #${i + 1} - ${word}`, word);
     }
 
   });
@@ -72,20 +80,13 @@ describe('solver', function() {
 
   describe('should solve special', function() {
 
-    const words = [ 'boohs' ];
+    const words = [ 'boohs', 'nanny', 'fados', 'yeses' ];
 
     for (const word of words) {
 
-      it(word, async function() {
+      const skip = word.startsWith('!');
 
-        // given
-        const game = createGame(word);
-
-        console.log('\nFind word <' + word + '>');
-
-        await solve(game, { log: printProgress });
-      });
-
+      test(word, word.replace(/^!/, ''), skip);
     }
 
   });

@@ -58,5 +58,5 @@ The algorithm __solves 98%__ of all puzzles in an average of __4.42 steps__.
 ```
 $ npm run bench
 ...
-W=0.98 S=4.42 R=1500
+W=0.98 S=4.41 R=1500
 ```
