@@ -61,5 +61,5 @@ The [algorithm](#algorithm) __solves 99%__ of all puzzles in an average of __4.3
 ```
 $ npm run bench
 ...
-W=0.986 S=4.325 R=1500
+W=0.991 S=4.373 R=1500
 ```

@@ -72,6 +72,30 @@ describe('solver', function() {
       expect(word).to.eql('chats');
     });
 
+
+    it('should suggest of remaining options', function() {
+
+      // given
+      const history = [
+        [ 'cigar', Array.from('??--+') ],
+        [ 'iched', Array.from('++-+-') ]
+      ];
+
+      // when
+      const {
+        word,
+        progress
+      } = suggest(history, allWords);
+
+      // then
+      expect(progress.remainingWords).to.eql([
+        'icier',
+        'icker'
+      ]);
+
+      expect(word).to.eql('icier');
+    });
+
   });
 
 
