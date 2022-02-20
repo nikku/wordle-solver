@@ -44,7 +44,7 @@ Well done!
 
 ## The Algorithm<a name="algorithm"></a>
 
-It chooses the next word that reduces the solution space (available words), as much as possible:
+Chooses the next word which reduces the solution space as much as possible:
 
 * Scores letter occurance per column
 * Derives a word score
