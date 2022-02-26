@@ -7,38 +7,28 @@ Get a little help solving your [Wordle](https://www.nytimes.com/games/wordle/ind
 
 ## Usage
 
-Try the [demo](https://cdn.statically.io/gh/nikku/wordle-solver/v0.0.7/demo/index.html) or use via cli:
+Try the [demo](https://cdn.statically.io/gh/nikku/wordle-solver/v0.0.7/demo/index.html).
 
-```
-$ npx @nikku/wordle-solver
+Alternatively, use module exports:
 
-@nikku/wordle-solver solves a Wordle for you.
+```javascript
+import {
+  suggest
+} from '@nikku/wordle-solver';
 
-We'll provide you with a word to input to Wordle.
-You feedback the result as a [+-???] encoded string:
+const words = [ ... ];
 
-  + = match
-  ? = contained
-  - = no match
+const history = [
+  [ 'hands', Array.from('??--+') ]
+];
 
------
+const {
+  word,
+  progress
+} = suggest(history, words);
 
-Attempt #1 --- Choose cares
-Enter result [+-???]: -?--?
-
-  ⬜🟨⬜⬜🟨    cares    p=0.00, matched=_____, letters=[...](26), words=[...](12947)
-
-Attempt #2 --- Choose spalt
-Enter result [+-???]: ?-??-
-
-  🟨⬜🟨🟨⬜    spalt    p=0.02, matched=_____, letters=[...](21), words=[...](196)
-
-Attempt #3 --- Choose usual
-Enter result [+-???]: +++++
-
-  🟩🟩🟩🟩🟩    usual    p=0.05, matched=_____, letters=[ u, s, a, l, y ], words=[ usual, lyssa ]
-
-Well done!
+// then
+console.log('Suggested pick: %s', word);
 ```
 
 
