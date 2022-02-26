@@ -13,7 +13,9 @@
     "dev": "nodemon --exec 'npm test' test/test.js",
     "bench": "node test/bench.js",
     "random-bench": "RANDOM_WORDS=1 npm run bench",
-    "serve": "sirv --dev"
+    "serve": "sirv --dev",
+    "start": "run-p serve open-demo",
+    "open-demo": "sleep 2 && opener http://localhost:8080/demo/"
   },
   "keywords": [
     "wordle",
@@ -28,6 +30,7 @@
     "mocha": "^9.2.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
+    "opener": "^1.5.2",
     "picocolors": "^1.0.0",
     "sirv-cli": "^2.0.2"
   }
