@@ -11,7 +11,7 @@ import {
   html,
   render,
   useState,
-  useMemo,
+  useCallback,
   useEffect
 } from 'https://unpkg.com/htm/preact/standalone.module.js';
 
@@ -96,10 +96,8 @@ HANDS
 
   }, [ text ]);
 
-  const handleKeyUp = useMemo(() => {
-    return (event) => {
-      setText(event.target.value);
-    };
+  const handleKeyUp = useCallback(() => {
+    setText(event.target.value);
   });
 
   return html`
