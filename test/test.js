@@ -57,29 +57,45 @@ describe('solver', function() {
 
   describe('#suggest', function() {
 
-    it.skip('should suggest word', function() {
+    it('should suggest initial word', function() {
+
+      // given
+      const history = [];
+
+      // when
+      const {
+        word,
+        wordsByRank
+      } = suggest(history, allWords, solutions);
+
+      // then
+      expect(word).to.eql('soare');
+    });
+
+
+    it('should suggest word', function() {
 
       // given
       const history = [
-        [ 'hands', Array.from('??--+') ]
+        [ 'saine', Array.from('--?-+') ]
       ];
 
       // when
       const {
-        word
+        word,
+        wordsByRank
       } = suggest(history, allWords, solutions);
 
       // then
-      expect(word).to.eql('chats');
+      expect(word).to.eql('putid');
     });
 
 
-    it.skip('should suggest of remaining options', function() {
+    it('should suggest of remaining options', function() {
 
       // given
       const history = [
-        [ 'cigar', Array.from('??--+') ],
-        [ 'iched', Array.from('++-+-') ]
+        [ 'cigar', Array.from('??--+') ]
       ];
 
       // when
@@ -90,11 +106,10 @@ describe('solver', function() {
 
       // then
       expect(progress.remainingWords).to.eql([
-        'icier',
-        'icker'
+        'incur'
       ]);
 
-      expect(word).to.eql('icier');
+      expect(word).to.eql('incur');
     });
 
   });
