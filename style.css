@@ -1,0 +1,90 @@
+body {
+  margin: 2em;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+  color: #333;
+}
+
+#widget {
+  width: 500px;
+  max-width: 100%;
+
+  background: #EEE;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.input-parent {
+  position: relative;
+  width: 160px;
+  height: auto;
+}
+
+.solver {
+  display: flex;
+  flex-direction: row;
+}
+
+h1, h3 {
+  margin: 1em 0;
+}
+
+.panel {
+  padding: .5em 1em;
+}
+
+.input-column {
+  width: 150px;
+  flex: initial;
+}
+
+.output-column {
+  flex: 1;
+}
+
+.error {
+  background: #de9c25;
+  color: #000;
+}
+
+.panel .highlight {
+  background: rgba(200, 200, 200, .8);
+  border-radius: .2em;
+  padding: .2em .4em;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.large-text {
+  font-size: 3em;
+}
+
+b {
+  color: #333;
+}
+
+.progress .text {
+  white-space: pre-wrap;
+}
+
+.entry + .entry:before {
+  content: ', ';
+}
+
+textarea {
+  width: 100%;
+  height: 480px;
+  font-size: 2em;
+  padding: .5em;
+  line-height: 1.5;
+  font-family: monospace;
+  border-radius: 5px 0 0 5px;
+  border: solid 1px #CCC;
+}
