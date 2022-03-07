@@ -103,6 +103,10 @@ async function spawnWorker(range) {
           if (_win) {
             steps += _steps;
           }
+
+          if (!_win) {
+            console.log('no match: %s', word)
+          }
         }
       );
 
