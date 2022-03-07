@@ -91,7 +91,7 @@ describe('solver', function() {
     });
 
 
-    it('should suggest of remaining options', function() {
+    it('should suggest remaining word', function() {
 
       // given
       const history = [
@@ -110,6 +110,29 @@ describe('solver', function() {
       ]);
 
       expect(word).to.eql('incur');
+    });
+
+
+    it('should suggest from remaining two words', function() {
+
+      // given
+      const history = [
+        [ 'soare', Array.from('-+++-') ]
+      ];
+
+      // when
+      const {
+        word,
+        progress
+      } = suggest(history, allWords, solutions);
+
+      // then
+      expect(progress.remainingWords).to.eql([
+        'hoard',
+        'board'
+      ]);
+
+      expect(word).to.eql('hoard');
     });
 
   });

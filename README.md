@@ -53,7 +53,8 @@ Solves __99.9%__ of all puzzles in an average of __3.7 steps__.
 ```
 $ npm run bench
 ...
-W=0.999 S=3.721 R=1500
+W=0.999 S=3.662 R=1500
+
 ```
 
 Solves __99.1%__ of all puzzles in an average of __4.3 steps__ when accepting the full dictionary as a solution:
