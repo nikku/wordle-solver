@@ -172,7 +172,7 @@ describe('solver', function() {
 
     describe('should solve special', function() {
 
-      const words = [  ];
+      const words = [ 'cheek' ];
 
       for (const word of words) {
 
