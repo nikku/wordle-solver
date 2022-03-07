@@ -57,6 +57,10 @@ function parseHistory(lines) {
   };
 }
 
+const PLACEHOLDER = `SOARE
+?+---
+HANDS
+----?`
 
 function WordleSolver(props) {
 
@@ -64,10 +68,7 @@ function WordleSolver(props) {
   const [ error, setError ] = useState(null);
   const [ progress, setProgress ] = useState(null);
 
-  const [ text, setText ] = useState(`CIGAR
-?+---
-HANDS
-----?`);
+  const [ text, setText ] = useState('');
 
   useEffect(() => {
 
@@ -103,7 +104,7 @@ HANDS
   return html`
     <div class="solver">
       <div class="column input-column">
-        <textarea spellCheck="false" onKeyup=${ handleKeyUp } value=${text}></textarea>
+        <textarea placeholder=${ PLACEHOLDER } spellCheck="false" onKeyup=${ handleKeyUp } value=${text}></textarea>
       </div>
 
       <div class="column output-column">
