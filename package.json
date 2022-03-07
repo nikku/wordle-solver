@@ -1,6 +1,6 @@
 {
   "name": "@nikku/wordle-solver",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A Wordle solver.",
   "exports": "lib/index.js",
   "type": "module",
