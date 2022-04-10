@@ -113,9 +113,9 @@ function WordleSolver(props) {
       <div class="column output-column">
         ${ error && html`
           <div class="error panel">
-            <p class="text">${ error.value && html`<span class="highlight">${error.value}</span> `}${ error.message }</p>
+            <p class="text">${ error.value && html`<span class="highlight">${error.value}</span>` }${ error.message }</p>
           </div>
-        `}
+        ` }
         ${ progress && html`
           <div class="suggestion panel">
             <h3>Matched</h3>
@@ -124,31 +124,31 @@ function WordleSolver(props) {
               <span class="highlight">${ progress.matched.map(m => m || '_').join('') }</span>
             </p>
           </div>
-        `}
+        ` }
         ${ progress && html`
           <div class="suggestion panel">
             <h3>Remaining words</h3>
 
             <p class="text">
-              ${ progress.remainingWords.length > 6
+              ${ progress.remainingWords.length > 24
                 ? html`[...](${ progress.remainingWords.length })`
                 : html`[ ${ progress.remainingWords.map(w => html`<span class="entry">${w}</span>`) } ]`
               }
             </p>
           </div>
-        `}
+        ` }
         ${ progress && html`
           <div class="suggestion panel">
             <h3>Remaining letters</h3>
 
             <p class="text">
-              ${ progress.remainingLetters.length > 6
+              ${ progress.remainingLetters.length > 12
                 ? html`[...](${ progress.remainingLetters.length })`
                 : html`[ ${ progress.remainingLetters.map(w => html`<span class="entry">${w}</span>`) } ]`
               }
             </p>
           </div>
-        `}
+        ` }
         ${ suggestion && html`
           <div class="suggestion panel">
             <h3>Suggested word</h3>
@@ -157,7 +157,7 @@ function WordleSolver(props) {
               <span class="highlight">${ suggestion }</span>
             </p>
           </div>
-        `}
+        ` }
       </div>
     </div>
   `
