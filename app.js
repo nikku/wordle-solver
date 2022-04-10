@@ -113,7 +113,7 @@ function WordleSolver(props) {
       <div class="column output-column">
         ${ error && html`
           <div class="error panel">
-            <p class="text">${ error.value && html`<span class="highlight">${error.value}</span>` }${ error.message }</p>
+            <p class="text">${ error.value && html`<span class="highlight">${error.value}</span> ` }${ error.message }</p>
           </div>
         ` }
         ${ progress && html`
