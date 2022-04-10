@@ -68,7 +68,8 @@ function WordleSolver(props) {
   const [ error, setError ] = useState(null);
   const [ progress, setProgress ] = useState(null);
 
-  const [ text, setText ] = useState('');
+  const [ text, setText ] = useState(`SOARE
+`);
 
   useEffect(() => {
 
@@ -99,12 +100,14 @@ function WordleSolver(props) {
 
   const handleKeyUp = useCallback(() => {
     setText(event.target.value);
+
+    event.preventDefault();
   });
 
   return html`
     <div class="solver">
       <div class="column input-column">
-        <textarea placeholder=${ PLACEHOLDER } spellCheck="false" onKeyup=${ handleKeyUp } value=${text}></textarea>
+        <textarea autoFocus placeholder=${ PLACEHOLDER } spellCheck="false" onKeyup=${ handleKeyUp } value=${text}></textarea>
       </div>
 
       <div class="column output-column">
