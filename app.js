@@ -99,10 +99,10 @@ function WordleSolver(props) {
   }, [ text ]);
 
   const handleKeyUp = useCallback(() => {
-    setText(event.target.value);
-
     event.preventDefault();
-  });
+
+    setText(event.target.value);
+  }, []);
 
   return html`
     <div class="solver">
