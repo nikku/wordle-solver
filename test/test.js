@@ -87,7 +87,7 @@ describe('solver', function() {
       } = suggest(history, allWords, solutions);
 
       // then
-      expect(word).to.eql('putid');
+      expect(word).to.eql('tilde');
     });
 
 
@@ -135,6 +135,59 @@ describe('solver', function() {
       expect(word).to.eql('hoard');
     });
 
+
+    it('should suggest from remaining three words', function() {
+
+      // given
+      const history = [
+        [ 'soare', Array.from('+-?--') ],
+        [ 'uplay', Array.from('?--+-') ]
+      ];
+
+      // when
+      const {
+        word,
+        wordsByRank,
+        progress
+      } = suggest(history, allWords, solutions);
+
+      // then
+      expect(progress.remainingWords).to.eql([
+        'squad',
+        'sumac',
+        'squat'
+      ]);
+
+      expect(word).to.eql('squad');
+    });
+
+
+    it('should suggest from remaining four words', function() {
+
+      // given
+      const history = [
+        [ 'soare', Array.from('+---?') ],
+        [ 'speel', Array.from('+-++-') ]
+      ];
+
+      // when
+      const {
+        word,
+        wordsByRank,
+        progress
+      } = suggest(history, allWords, solutions);
+
+      // then
+      expect(progress.remainingWords).to.eql([
+        'steed',
+        'sweet',
+        'sheen',
+        'sheet'
+      ]);
+
+      expect(word).to.eql('sheet');
+    });
+
   });
 
 
@@ -172,7 +225,7 @@ describe('solver', function() {
 
     describe('should solve special', function() {
 
-      const words = [ 'cheek', 'melee' ];
+      const words = [ 'cheek', 'melee', 'daunt', 'catch' ];
 
       for (const word of words) {
 
