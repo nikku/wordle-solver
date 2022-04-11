@@ -48,18 +48,18 @@ Every pick it chooses the next word in order to reduce the solution space as muc
 
 ### Performance
 
-Solves __99.9%__ of all puzzles in an average of __3.7 steps__.
+Solves __100%__ of all puzzles in an average of __3.6 steps__.
 
 ```
 $ npm run bench
 ...
-W=0.999 S=3.662 R=1500
-
+W=1.000 S=3.598 R=1500
 ```
 
-Solves __99.1%__ of all puzzles in an average of __4.3 steps__ when accepting the full dictionary as a solution:
+Solves __99%__ of all puzzles in an average of __4.1 steps__ when accepting the full dictionary as a solution:
 
 ```
 $ FULL_DATA_SET=1 npm run bench
 ...
-W=0.991 S=4.373 R=1500
+W=0.990 S=4.115 R=1500
+```
