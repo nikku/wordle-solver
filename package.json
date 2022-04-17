@@ -21,6 +21,10 @@
     "wordle",
     "wordle-solver"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikku/wordle-solver.git"
+  },
   "author": "Nico Rehwaldt <git_nikku@nixis.de>",
   "files": [
     "lib"
