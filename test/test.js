@@ -87,7 +87,7 @@ describe('solver', function() {
       } = suggest(history, allWords, solutions);
 
       // then
-      expect(word).to.eql('tilde');
+      expect(word).to.eql('boult');
     });
 
 
@@ -162,6 +162,27 @@ describe('solver', function() {
     });
 
 
+    it('should suggest other word', function() {
+
+      // given
+      const history = [
+        [ 'soare', Array.from('-+-??') ]
+      ];
+
+      // when
+      const {
+        word,
+        wordsByRank,
+        progress
+      } = suggest(history, allWords, solutions);
+
+      // then
+      expect(progress.remainingWords).to.have.length(22);
+
+      expect(word).to.eql('vowel');
+    });
+
+
     it('should suggest from remaining four words', function() {
 
       // given
@@ -225,7 +246,7 @@ describe('solver', function() {
 
     describe('should solve special', function() {
 
-      const words = [ 'cheek', 'melee', 'daunt', 'catch' ];
+      const words = [ 'cheek', 'melee', 'daunt', 'catch', 'river', 'daddy' ];
 
       for (const word of words) {
 
