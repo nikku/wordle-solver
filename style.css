@@ -9,9 +9,8 @@ body {
 }
 
 #widget {
-  width: 500px;
   max-width: 100%;
-
+  width: 600px;
   background: #EEE;
   border-radius: 5px;
   overflow: hidden;
@@ -36,13 +35,28 @@ h1, h3 {
   padding: .5em 1em;
 }
 
+.column {
+  flex: 1;
+}
+
 .input-column {
   width: 150px;
   flex: initial;
 }
 
 .output-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.output-column .details {
+  display: flex;
   flex: 1;
+}
+
+.details-column {
+  flex: .5;
+  border-left: solid 1px #CCC;
 }
 
 .error {
@@ -74,13 +88,20 @@ b {
   white-space: pre-wrap;
 }
 
-.entry + .entry:before {
+span.entry + span.entry:before {
   content: ', ';
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 textarea {
   width: 100%;
-  height: 480px;
+  height: 100%;
+  min-height: 500px;
   font-size: 2em;
   padding: .5em;
   line-height: 1.5;
