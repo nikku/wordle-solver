@@ -190,7 +190,10 @@ function WordleSolver(props) {
   `
 }
 
-render(html`<${WordleSolver} />`, document.querySelector('#widget'));
+const widgetEl = document.querySelector('#widget');
+widgetEl.textContent = '';
+
+render(html`<${WordleSolver} />`, widgetEl);
 
 
 // helpers ////////////
