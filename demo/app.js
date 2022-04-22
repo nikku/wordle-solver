@@ -68,8 +68,12 @@ function WordleSolver(props) {
   const [ error, setError ] = useState(null);
   const [ progress, setProgress ] = useState(null);
 
-  const [ text, setText ] = useState(`SOARE
-`);
+  const [ text, setText ] = useState(getTextFromUrl(`SOARE
+`));
+
+  useEffect(() => {
+    setTextToUrl(text);
+  }, [ text ]);
 
   useEffect(() => {
 
@@ -84,11 +88,16 @@ function WordleSolver(props) {
 
       const {
         progress,
-        word
+        word,
+        wordsByRank
       } = suggest(history, words, solutions);
 
       setError(null);
-      setSuggestion(error && error.type === 'match' ? null : word);
+      setSuggestion(error && error.type === 'match' ? null : {
+        word,
+        wordsByRank
+      });
+
       setProgress(progress);
     }
 
@@ -116,51 +125,94 @@ function WordleSolver(props) {
             <p class="text">${ error.value && html`<span class="highlight">${error.value}</span> ` }${ error.message }</p>
           </div>
         ` }
-        ${ progress && html`
-          <div class="suggestion panel">
-            <h3>Matched</h3>
+        <div class="details">
+          <div class="column">
+            ${ progress && html`
+              <div class="suggestion panel">
+                <h3>Matched</h3>
 
-            <p class="text">
-              <span class="highlight">${ progress.matched.map(m => m || '_').join('') }</span>
-            </p>
-          </div>
-        ` }
-        ${ progress && html`
-          <div class="suggestion panel">
-            <h3>Remaining words</h3>
+                <p class="text">
+                  <span class="highlight">${ progress.matched.map(m => m || '_').join('') }</span>
+                </p>
+              </div>
+            ` }
+            ${ progress && html`
+              <div class="suggestion panel">
+                <h3>Remaining words</h3>
 
-            <p class="text">
-              ${ progress.remainingWords.length > 24
-                ? html`[...](${ progress.remainingWords.length })`
-                : html`[ ${ progress.remainingWords.map(w => html`<span class="entry">${w}</span>`) } ]`
-              }
-            </p>
-          </div>
-        ` }
-        ${ progress && html`
-          <div class="suggestion panel">
-            <h3>Remaining letters</h3>
+                <p class="text">
+                  ${ progress.remainingWords.length > 24
+                    ? html`[...](${ progress.remainingWords.length })`
+                    : html`[ ${ progress.remainingWords.map(w => html`<span class="entry">${w}</span>`) } ]`
+                  }
+                </p>
+              </div>
+            ` }
+            ${ progress && html`
+              <div class="suggestion panel">
+                <h3>Remaining letters</h3>
 
-            <p class="text">
-              ${ progress.remainingLetters.length > 12
-                ? html`[...](${ progress.remainingLetters.length })`
-                : html`[ ${ progress.remainingLetters.map(w => html`<span class="entry">${w}</span>`) } ]`
-              }
-            </p>
-          </div>
-        ` }
-        ${ suggestion && html`
-          <div class="suggestion panel">
-            <h3>Suggested word</h3>
+                <p class="text">
+                  ${ progress.remainingLetters.length > 12
+                    ? html`[...](${ progress.remainingLetters.length })`
+                    : html`[ ${ progress.remainingLetters.map(w => html`<span class="entry">${w}</span>`) } ]`
+                  }
+                </p>
+              </div>
+            ` }
+            ${ suggestion && html`
+              <div class="suggestion panel">
+                <h3>Suggested word</h3>
 
-            <p class="text">
-              <span class="highlight">${ suggestion }</span>
-            </p>
+                <p class="text">
+                  <span class="highlight">${ suggestion.word }</span>
+                </p>
+              </div>
+            ` }
           </div>
-        ` }
+
+          ${ suggestion && html`
+            <div class="column details-column">
+                <div class="suggestion panel">
+                  <h3>Word ranks</h3>
+
+                  <ul class="text">
+                    ${ suggestion.wordsByRank.slice(0, 10).map(([word, rank]) => html`
+                      <li class="entry">${word} (${ Number(rank).toFixed(3) })</li>
+                    `) }
+                  </p>
+                </div>
+            </div>
+          ` }
+        </div>
       </div>
     </div>
   `
 }
 
 render(html`<${WordleSolver} />`, document.querySelector('#widget'));
+
+
+// helpers ////////////
+
+function getTextFromUrl(fallbackText) {
+  const url = new URL(window.location.href);
+
+  const params = url.searchParams;
+
+  return params.get('h') || fallbackText;
+}
+
+function setTextToUrl(text) {
+  const url = new URL(window.location.href);
+
+  const params = url.searchParams;
+
+  if (!text.trim()) {
+    params.delete('h');
+  } else {
+    params.set('h', text);
+  }
+
+  window.history.pushState({}, null, url.toString());
+}
