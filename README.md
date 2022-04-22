@@ -7,7 +7,7 @@ Get a little help solving your [Wordle](https://www.nytimes.com/games/wordle/ind
 
 ## Usage
 
-Try the [demo](https://nikku.github.io/wordle-solver/index.html).
+Try the [demo](https://nikku.github.io/wordle-solver).
 
 Alternatively, use module exports:
 
