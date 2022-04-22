@@ -28,6 +28,7 @@ body {
 .solver {
   display: flex;
   flex-direction: row;
+  flex: 1;
 }
 
 h1, h3 {
@@ -114,7 +115,7 @@ textarea {
 
 .spinner {
   --stroke-width: 6px;
-  --size: 64px;
+  --size: 48px;
   --duration: 1s;
 
   flex: initial;
