@@ -246,7 +246,7 @@ describe('solver', function() {
 
     describe('should solve special', function() {
 
-      const words = [ 'cheek', 'melee', 'daunt', 'catch', 'river', 'daddy', 'foyer' ];
+      const words = [ 'cheek', 'melee', 'daunt', 'catch', 'river', 'daddy', 'foyer', 'south' ];
 
       for (const word of words) {
 
