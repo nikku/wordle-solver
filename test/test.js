@@ -179,7 +179,7 @@ describe('solver', function() {
       // then
       expect(progress.remainingWords).to.have.length(22);
 
-      expect(word).to.eql('vowel');
+      expect(word).to.eql('crwth');
     });
 
 
