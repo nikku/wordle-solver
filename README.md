@@ -41,7 +41,7 @@ The solver is implemented in [`lib/solver.js`](./lib/solver.js).
 Every pick it chooses the next word in order to reduce the solution space as much as possible.
 
 * Accounts for historic picks (match, not matched, contained)
-* Scores letter occurance per column
+* Scores letter occurance per column and word
 * Derives a word score
 * Adds a penalty for letter duplicates
 * Uses matched slots to guess / exclude likely letters
